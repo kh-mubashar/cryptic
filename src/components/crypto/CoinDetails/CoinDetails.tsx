@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import React, { useMemo } from 'react'
-import { gql, useQuery } from '@apollo/client'
-import CoinChart from '@/components/CoinChart'
+import React, { useMemo } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { CoinChart } from '@/components/crypto/CoinChart';
 
 interface CoinDetailsProps {
-  coinId: string
+  coinId: string;
 }
 
 interface DexTrade {
   timeInterval: {
-    minute: string
-  }
-  quotePrice: number
+    minute: string;
+  };
+  quotePrice: number;
 }
 
 interface QueryData {
   ethereum: {
-    dexTrades: DexTrade[]
-  }
+    dexTrades: DexTrade[];
+  };
 }
 
 const GET_COIN_DATA = gql`
@@ -35,7 +35,7 @@ const GET_COIN_DATA = gql`
       }
     }
   }
-`
+`;
 
 export function CoinDetails({ coinId }: CoinDetailsProps) {
   const fromDate = useMemo(() => {
@@ -49,15 +49,16 @@ export function CoinDetails({ coinId }: CoinDetailsProps) {
       address: coinId,
       from: fromDate,
     },
-  })
+  });
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>Error: {error.message}</div>
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
-  const chartData = data?.ethereum?.dexTrades?.map((trade) => ({
-    time: trade.timeInterval.minute,
-    price: trade.quotePrice,
-  })) || []
+  const chartData =
+    data?.ethereum?.dexTrades?.map((trade) => ({
+      time: trade.timeInterval.minute,
+      price: trade.quotePrice,
+    })) || [];
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -68,5 +69,5 @@ export function CoinDetails({ coinId }: CoinDetailsProps) {
         <CoinChart data={chartData} />
       </div>
     </div>
-  )
+  );
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Coin, MarketData, fetchCombinedData } from '../services/cryptoApi';
 
-export const useCryptoData = () => {
+export const useCryptoData = (limit?: number) => {
   const [coins, setCoins] = useState<Coin[]>([]);
   const [marketData, setMarketData] = useState<MarketData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,7 @@ export const useCryptoData = () => {
       setIsLoading(true);
       const data = await fetchCombinedData();
 
-      setCoins(data.coins);
+      setCoins(limit ? data.coins.slice(0, limit) : data.coins);
       setMarketData(data.global.data);
       setError(null);
       setLastFetch(now);

@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorMessage } from '@/components/ui/ErrorMessage';
 
 export default function Error({
@@ -12,7 +14,7 @@ export default function Error({
       message="There was a problem loading the alerts page"
       action={{
         label: 'Try again',
-        onClick: reset
+        onClick: reset,
       }}
     />
   );
