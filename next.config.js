@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverActions: true,
-    esmExternals: 'loose',
+    // Removed experimental features that might cause build issues
   },
   images: {
     domains: [
