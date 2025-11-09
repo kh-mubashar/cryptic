@@ -1,12 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/coins/route": "app/api/coins/route.js",
-  "/coin/[id]/page": "app/coin/[id]/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
-  "/api/auth/[...auth0]/route": "app/api/auth/[...auth0]/route.js",
-  "/api/crypto/route": "app/api/crypto/route.js",
-  "/(protected)/dashboard/page": "app/(protected)/dashboard/page.js",
-  "/(protected)/portfolio/page": "app/(protected)/portfolio/page.js",
-  "/(protected)/alerts/page": "app/(protected)/alerts/page.js"
-}
+{}
